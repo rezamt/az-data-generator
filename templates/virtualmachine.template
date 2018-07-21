@@ -1,0 +1,35 @@
+[{{- range $i, $e := . }}{{if $i}},{{end}}
+    {
+        "id": "{{$e.Id}}",
+        "size": "{{$e.Size}}",
+        "name" :"{{$e.Name}}",
+        "networkInterface": [
+            {
+                "privateIp" : "{{$e.PrivateIp}}",
+                "privateIPType" : "{{$e.PrivateIPType}}",
+                "publicIp" : "{{$e.PublicIP}}",
+                "publicIpType" : "{{$e.PublicType}}"
+            }
+        ],
+        "location" :"{{$e.Location}}",
+        "subscription" : "{{$e.Subscription}}",
+        "resourceGroup" : "{{$e.ResourceGroup}}",
+        "tags" : "{{$e.Tags}}",
+        "imagePublisher": "{{$e.ImagePublisher}}",
+        "statuses": [
+            {
+                "code": "ProvisioningState/succeeded",
+                "level": "Info",
+                "displayStatus": "Provisioning succeeded",
+                "time": "2018-07-20T16:00:24.4511706+00:00"
+            },
+            {
+                "code": "PowerState/deallocated",
+                "level": "Info",
+                "displayStatus": "VM deallocated"
+            }
+        ]
+
+    }
+ {{- end}}
+]

@@ -1,0 +1,38 @@
+[{{- range $i, $e := . }}{{if $i}},{{end}}
+    {
+          "id"  : "{{$e.Name}}"
+          "name": "{{$e.Name}}",
+          "sku" : {
+            "name": "{{$e.Sku.Name}}",
+            "tier": "{{$e.Sku.Tier}}",
+            "capacity": {{$e.Sku.Capacity}}
+          },
+          "location" : "{{$e.Location}}",
+          "tags" : "{{$e.Tags}}",
+          "provisioningState": "{{$e.ProvisioningState}}",
+          "overprovision": {{$e.Overprovision}},
+          "vms" : [{{- range $j, $v := $e.VirtualMachines }}{{if $j}},{{end}}
+              {
+                  "id" : {{$v.Id}},
+                  "computerName" :"{{$v.Name}}",
+                  "osName": "{{$v.OSName}}",
+                  "ip" : "{{$v.IP}}",
+                  "statuses": [
+                    {
+                        "code": "ProvisioningState/succeeded",
+                        "level": "Info",
+                        "displayStatus": "Provisioning succeeded",
+                        "time": "2018-07-13T23:01:41.8851826+00:00"
+                    },
+                    {
+                        "code": "PowerState/running",
+                        "level": "Info",
+                        "displayStatus": "VM running"
+                    }
+                ]
+              }
+            {{- end}}
+          ]
+    }
+ {{- end}}
+]
